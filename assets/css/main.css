@@ -133,6 +133,16 @@ table {
   border-spacing: 0;
 }
 
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 :root {
   scroll-behavior: smooth;
   font-family: "Josefin Sans", sans-serif;
@@ -483,7 +493,7 @@ body {
 .about-us {
   background: url(../images/whyChooseUsImage.jpg);
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position: center;
   position: relative;
   display: flex;
@@ -497,10 +507,11 @@ body {
   position: absolute;
   inset: 0;
   background: rgba(71, 67, 67, 0.7);
+  backdrop-filter: blur(1rem);
 }
 .about-us .text-container {
   z-index: 1;
-  background-color: rgba(84, 115, 253, 0.3882352941);
+  background-color: rgba(84, 115, 253, 0.39);
   padding: 12rem 6rem;
   display: flex;
   flex-direction: column;
@@ -512,28 +523,29 @@ body {
 }
 .about-us .text-container p {
   font-size: 2rem;
-  color: #ffffff;
+  color: white;
   width: 45%;
 }
-.about-us .text-container .scroll-down {
+.about-us .text-container .scroll-down-about {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
   margin-top: 3rem;
-}
-.about-us .text-container .scroll-down:hover {
   cursor: pointer;
 }
-.about-us .text-container .scroll-down:hover img {
-  scale: 1.3;
+.about-us .text-container .scroll-down-about:hover {
+  cursor: pointer;
 }
-.about-us .text-container .scroll-down span {
+.about-us .text-container .scroll-down-about:hover img {
+  transform: scale(1.3);
+}
+.about-us .text-container .scroll-down-about span {
   font-size: 1.8rem;
   color: #ffffff;
 }
-.about-us .text-container .scroll-down img {
+.about-us .text-container .scroll-down-about img {
   height: 1.4rem;
-  transition: scale 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 .about-us .image-container {
   z-index: 2;
@@ -548,7 +560,7 @@ body {
 
 .articles-section {
   background-color: #333333;
-  height: 70vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   gap: 7.5rem;
@@ -609,6 +621,69 @@ body {
 }
 .articles-section .articles .article-container:hover img {
   transform: translate(0);
+}
+
+.accordion-section {
+  height: 70vh;
+  padding: 0 17%;
+  background: url(../images/accordionSectionImage.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+.accordion-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(71, 67, 67, 0.7);
+  backdrop-filter: blur(1rem);
+}
+.accordion-section .title {
+  font-size: 4.8rem;
+  z-index: 1;
+  margin-bottom: 7rem;
+}
+.accordion-section .accordion-container {
+  z-index: 1;
+  max-width: 80%;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 0.2rem solid #ffffff;
+  cursor: pointer;
+}
+.accordion-section .accordion-container.active .answer {
+  max-height: 30rem;
+  animation: fade 1s ease-in-out;
+}
+.accordion-section .accordion-container.active svg {
+  transform: rotate(180deg);
+}
+.accordion-section .accordion-container svg {
+  transition: transform 0.3s ease-in-out;
+  width: 20px;
+}
+.accordion-section .accordion-container .question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.accordion-section .accordion-container .question h3 {
+  font-size: 3rem;
+}
+.accordion-section .accordion-container .answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.7s ease;
+}
+.accordion-section .accordion-container .answer p {
+  padding-top: 1rem;
+  line-height: 2rem;
+  font-size: 2rem;
 }
 
 /*# sourceMappingURL=main.css.map */
