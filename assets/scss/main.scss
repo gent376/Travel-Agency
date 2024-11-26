@@ -450,26 +450,45 @@ body {
   height: 70vh;
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
+  gap: 7.5rem;
   align-items: center;
   justify-content: center;
   padding: 0 17%;
   color: #ffffff;
+  border-top: 1.2rem solid white;
+  border-bottom: 1.2rem solid white;
   h5 {
     font-size: 4.8rem;
   }
   .articles {
     display: flex;
     flex-direction: row;
-    gap: 4rem;
+    gap: 7rem;
     .article-container {
       display: flex;
       flex-direction: column;
-
-      img {
-        height: 20rem;
-        width: 100%;
-        object-fit: cover;
+      cursor: pointer;
+      .img {
+        position: relative;
+        img {
+          height: 20rem;
+          width: 100%;
+          object-fit: cover;
+          transform: translate(2rem, -2rem);
+          position: relative;
+          z-index: 1;
+          transition: 0.5s all ease-in-out;
+        }
+        &::after {
+          content: "";
+          height: 98%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: #00000049;
+          z-index: 0;
+        }
       }
       h4 {
         font-size: 3rem;
@@ -477,6 +496,15 @@ body {
       }
       p {
         font-size: 1.6rem;
+      }
+      &:nth-child(1) {
+        margin-top: 5rem;
+      }
+      &:nth-child(2) {
+        margin-top: 10rem;
+      }
+      &:hover img {
+        transform: translate(0);
       }
     }
   }

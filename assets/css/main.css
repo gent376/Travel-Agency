@@ -551,11 +551,13 @@ body {
   height: 70vh;
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
+  gap: 7.5rem;
   align-items: center;
   justify-content: center;
   padding: 0 17%;
   color: #ffffff;
+  border-top: 1.2rem solid white;
+  border-bottom: 1.2rem solid white;
 }
 .articles-section h5 {
   font-size: 4.8rem;
@@ -563,16 +565,34 @@ body {
 .articles-section .articles {
   display: flex;
   flex-direction: row;
-  gap: 4rem;
+  gap: 7rem;
 }
 .articles-section .articles .article-container {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
-.articles-section .articles .article-container img {
+.articles-section .articles .article-container .img {
+  position: relative;
+}
+.articles-section .articles .article-container .img img {
   height: 20rem;
   width: 100%;
   object-fit: cover;
+  transform: translate(2rem, -2rem);
+  position: relative;
+  z-index: 1;
+  transition: 0.5s all ease-in-out;
+}
+.articles-section .articles .article-container .img::after {
+  content: "";
+  height: 98%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2862745098);
+  z-index: 0;
 }
 .articles-section .articles .article-container h4 {
   font-size: 3rem;
@@ -580,6 +600,15 @@ body {
 }
 .articles-section .articles .article-container p {
   font-size: 1.6rem;
+}
+.articles-section .articles .article-container:nth-child(1) {
+  margin-top: 5rem;
+}
+.articles-section .articles .article-container:nth-child(2) {
+  margin-top: 10rem;
+}
+.articles-section .articles .article-container:hover img {
+  transform: translate(0);
 }
 
 /*# sourceMappingURL=main.css.map */
