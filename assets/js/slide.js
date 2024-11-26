@@ -7,7 +7,7 @@ let currentIndex = 0;
 let autoScrollInterval;
 
 // 2. SLIDESHOW FUNCTIONS
-// Update the slide position based on the current index
+
 function updateSlidePosition() {
   slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
@@ -36,15 +36,14 @@ function stopAutoScroll() {
 }
 
 // 3. SLIDESHOW EVENT LISTENERS
-// Add click listeners to navigation buttons
 nextButton.addEventListener("click", () => {
   nextSlide();
-  startAutoScroll(); // Restart auto-scroll after manual interaction
+  startAutoScroll();
 });
 
 prevButton.addEventListener("click", () => {
   prevSlide();
-  startAutoScroll(); // Restart auto-scroll after manual interaction
+  startAutoScroll();
 });
 
 startAutoScroll();
