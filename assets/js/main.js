@@ -51,7 +51,9 @@ prevButton.addEventListener("click", () => {
 startAutoScroll();
 
 // 4. SMOOTH SCROLL FUNCTIONALITY
-document.querySelector(".scroll-down").addEventListener("click", () => {
-  const footer = document.querySelector("#footer");
-  footer.scrollIntoView({ behavior: "smooth", block: "start" });
+document.querySelectorAll(".scroll-down").forEach((scrollButton) => {
+  scrollButton.addEventListener("click", () => {
+    const footer = document.querySelector("#footer");
+    footer.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 });
