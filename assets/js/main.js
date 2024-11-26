@@ -4,6 +4,7 @@ document.querySelectorAll(".scroll-down").forEach((scrollButton) => {
     footer.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
+
 document.querySelectorAll(".scroll-down-about").forEach((scrollButton) => {
   scrollButton.addEventListener("click", () => {
     const footer = document.querySelector("#about-us");
@@ -15,16 +16,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const accordions = document.querySelectorAll(".accordion-container");
 
   accordions.forEach((accordion) => {
+    const question = accordion.querySelector(".question");
+    const answer = accordion.querySelector(".answer");
+
+    const calculateHeight = () => {
+      return question.offsetHeight + answer.scrollHeight;
+    };
+
     accordion.addEventListener("click", () => {
-      accordion.classList.toggle("active");
+      const isActive = accordion.classList.contains("active");
+
+      accordions.forEach((acc) => {
+        acc.style.height = `${acc.querySelector(".question").offsetHeight}px`;
+        acc.classList.remove("active");
+      });
+
+      if (!isActive) {
+        accordion.style.height = `${calculateHeight()}px`;
+        accordion.classList.add("active");
+      } else {
+        accordion.style.height = `${question.offsetHeight}px`;
+      }
     });
+
+    accordion.style.height = `${question.offsetHeight}px`;
   });
 });
 
 document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault(); // Prevent the form from submitting
+  e.preventDefault();
 
-  // Clear previous errors
   document.getElementById("nameError").textContent = "";
   document.getElementById("emailError").textContent = "";
   document.getElementById("messageError").textContent = "";
@@ -58,7 +79,6 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     isValid = false;
   }
 
-  // Validate message
   if (message === "") {
     document.getElementById("messageError").textContent =
       "Message is required.";
@@ -69,10 +89,9 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     isValid = false;
   }
 
-  // If the form is valid, display a success message
   if (isValid) {
     document.getElementById("successMessage").textContent =
       "Thank you for your message!";
-    document.getElementById("contactForm").reset(); // Reset the form
+    document.getElementById("contactForm").reset();
   }
 });

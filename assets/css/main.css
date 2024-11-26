@@ -346,13 +346,12 @@ body {
 
 .second-section {
   position: relative;
-  height: 85vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 15rem;
-  padding: 0 17%;
+  padding: 4% 17%;
   background: url(../images/whyChooseUsImage.jpg);
   background-size: cover;
   background-repeat: none;
@@ -499,8 +498,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 17%;
-  height: 90vh;
+  padding: 4% 17%;
 }
 .about-us::before {
   content: "";
@@ -518,11 +516,11 @@ body {
   gap: 1rem;
 }
 .about-us .text-container header {
-  font-size: 4.8rem;
+  font-size: 2.8rem;
   color: #ffffff;
 }
 .about-us .text-container p {
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: white;
   width: 45%;
 }
@@ -550,11 +548,11 @@ body {
 .about-us .image-container {
   z-index: 2;
   position: absolute;
-  right: 15%;
+  right: 20%;
 }
 .about-us .image-container img {
-  width: 55rem;
-  height: 40rem;
+  width: 40rem;
+  height: 50rem;
   object-fit: cover;
 }
 
@@ -563,10 +561,9 @@ body {
   height: 80vh;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
   align-items: center;
   justify-content: center;
-  padding: 5% 17%;
+  padding: 2% 17%;
   color: #ffffff;
   border-top: 1.2rem solid white;
   border-bottom: 1.2rem solid white;
@@ -624,7 +621,6 @@ body {
 }
 
 .accordion-section {
-  height: 80vh;
   padding: 4% 17%;
   background: url(../images/accordionSectionImage.jpg);
   background-size: cover;
@@ -655,17 +651,8 @@ body {
   padding-bottom: 1rem;
   border-bottom: 0.2rem solid #ffffff;
   cursor: pointer;
-}
-.accordion-section .accordion-container.active .answer {
-  max-height: 30rem;
-  animation: fade 1s ease-in-out;
-}
-.accordion-section .accordion-container.active svg {
-  transform: rotate(180deg);
-}
-.accordion-section .accordion-container svg {
-  transition: transform 0.3s ease-in-out;
-  width: 20px;
+  overflow: hidden; /* Prevent content overflow */
+  transition: height 0.5s ease; /* Smooth height animation */
 }
 .accordion-section .accordion-container .question {
   display: flex;
@@ -675,15 +662,30 @@ body {
 .accordion-section .accordion-container .question h3 {
   font-size: 3rem;
 }
+.accordion-section .accordion-container .question svg {
+  transition: transform 0.3s ease-in-out;
+  width: 20px;
+}
 .accordion-section .accordion-container .answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.7s ease;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0s 0.3s;
 }
 .accordion-section .accordion-container .answer p {
   padding-top: 1rem;
   line-height: 2rem;
   font-size: 2rem;
+}
+.accordion-section .accordion-container.active .answer {
+  max-height: none; /* Allow content to expand fully */
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.accordion-section .accordion-container.active .question svg {
+  transform: rotate(180deg);
 }
 
 .form {
@@ -691,7 +693,8 @@ body {
   background-size: cover;
   background-position: center;
   position: relative;
-  height: 70vh;
+  padding: 4% 17%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -707,9 +710,15 @@ body {
 .form .form-container {
   position: relative;
   z-index: 2;
-  width: 35%;
+  width: 55%;
   background: rgba(0, 0, 0, 0.418);
   padding: 6rem;
+}
+.form .form-container h3 {
+  color: #ffffff;
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 700;
 }
 .form .form-container form {
   display: flex;
